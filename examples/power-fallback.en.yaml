@@ -1,0 +1,26 @@
+phase_peak_guard:
+  module: phase_peak_guard
+  class: PhasePeakGuard
+
+  # Use this example only when direct phase-current sensors are unavailable.
+  import_power_l1: sensor.REPLACE_ME_L1_IMPORT_POWER
+  import_power_l2: sensor.REPLACE_ME_L2_IMPORT_POWER
+  import_power_l3: sensor.REPLACE_ME_L3_IMPORT_POWER
+  export_power_l1: sensor.REPLACE_ME_L1_EXPORT_POWER
+  export_power_l2: sensor.REPLACE_ME_L2_EXPORT_POWER
+  export_power_l3: sensor.REPLACE_ME_L3_EXPORT_POWER
+
+  voltage_l1: sensor.REPLACE_ME_L1_VOLTAGE
+  voltage_l2: sensor.REPLACE_ME_L2_VOLTAGE
+  voltage_l3: sensor.REPLACE_ME_L3_VOLTAGE
+
+  # W/kW and V are detected through unit_of_measurement. If that attribute is
+  # absent, set an override such as active_power_multiplier: 1000.
+  assumed_power_factor: 0.90
+  nominal_voltage: 230
+
+  storage_file: /homeassistant/python_storage/phase_peak_guard.json
+  max_storage_mb: 5
+  mqtt_enabled: true
+  mqtt_base_topic: home/phase_guard
+  mqtt_device_id: phase_peak_guard

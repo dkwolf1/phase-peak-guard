@@ -2,6 +2,15 @@
 
 Alle belangrijke wijzigingen aan dit project worden in dit bestand vastgelegd.
 
+## [1.1.1] - 2026-10-02
+
+### Toegevoegd
+
+- volledige Engelse README naast de Nederlandse documentatie;
+- Engelse voorbeeldconfiguraties;
+- Engelse dashboardvariant;
+- taalkeuze bovenaan beide README-bestanden.
+
 ## [1.1.0] - 2026-10-02
 
 ### Toegevoegd

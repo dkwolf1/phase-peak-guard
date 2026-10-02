@@ -1,3 +1,5 @@
+[Nederlands](README.md) | [English](README_EN.md)
+
 # 3x25A Phase Guard for Home Assistant
 
 Zelfstandige AppDaemon-app voor het bewaken en analyseren van een driefasige

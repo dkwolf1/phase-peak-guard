@@ -114,7 +114,7 @@ class PhaseRuntime:
 class PhasePeakGuard(hass.Hass):
     """Monitor current, headroom, trends and imbalance on a 3x25 A supply."""
 
-    VERSION = "1.1.0"
+    VERSION = "1.1.1"
 
     def initialize(self) -> None:
         self.service_fuse_amp = self._number("service_fuse_amp", 25.0, 1.0, 200.0)

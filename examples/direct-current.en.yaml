@@ -1,0 +1,22 @@
+phase_peak_guard:
+  module: phase_peak_guard
+  class: PhasePeakGuard
+
+  # Replace only these entity IDs.
+  current_l1: sensor.REPLACE_ME_L1_CURRENT
+  current_l2: sensor.REPLACE_ME_L2_CURRENT
+  current_l3: sensor.REPLACE_ME_L3_CURRENT
+
+  # Optional; nominal_voltage is used when voltage sensors are unavailable.
+  voltage_l1: sensor.REPLACE_ME_L1_VOLTAGE
+  voltage_l2: sensor.REPLACE_ME_L2_VOLTAGE
+  voltage_l3: sensor.REPLACE_ME_L3_VOLTAGE
+
+  service_fuse_amp: 25
+  storage_file: /homeassistant/python_storage/phase_peak_guard.json
+  max_storage_mb: 5
+
+  mqtt_enabled: true
+  mqtt_base_topic: home/phase_guard
+  mqtt_device_id: phase_peak_guard
+  mqtt_device_name: "3x25A Phase Guard"
