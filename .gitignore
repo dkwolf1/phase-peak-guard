@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+*.log
+.coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.idea/
+.vscode/
+.DS_Store
+
+# Persoonlijke AppDaemon-configuratie en meetgeschiedenis.
+apps.yaml
+phase_peak_guard.json
+phase_peak_guard.json.*
+*.corrupt
+*.tmp
+
+!apps.yaml.example

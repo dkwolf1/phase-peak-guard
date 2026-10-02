@@ -1,0 +1,73 @@
+phase_peak_guard:
+  module: phase_peak_guard
+  class: PhasePeakGuard
+
+  # Aanbevolen: directe stroommeting per fase.
+  current_l1: sensor.REPLACE_ME_L1_CURRENT
+  current_l2: sensor.REPLACE_ME_L2_CURRENT
+  current_l3: sensor.REPLACE_ME_L3_CURRENT
+
+  # Optioneel, maar nuttig voor controle en vermogensfallback.
+  voltage_l1: sensor.REPLACE_ME_L1_VOLTAGE
+  voltage_l2: sensor.REPLACE_ME_L2_VOLTAGE
+  voltage_l3: sensor.REPLACE_ME_L3_VOLTAGE
+
+  # Optioneel: gebruik deze voor richting en als fallback.
+  import_power_l1: sensor.REPLACE_ME_L1_IMPORT_POWER
+  import_power_l2: sensor.REPLACE_ME_L2_IMPORT_POWER
+  import_power_l3: sensor.REPLACE_ME_L3_IMPORT_POWER
+  export_power_l1: sensor.REPLACE_ME_L1_EXPORT_POWER
+  export_power_l2: sensor.REPLACE_ME_L2_EXPORT_POWER
+  export_power_l3: sensor.REPLACE_ME_L3_EXPORT_POWER
+
+  # Units worden automatisch uit Home Assistant gelezen. Alleen instellen
+  # wanneer je integratie geen correcte unit_of_measurement publiceert.
+  # current_multiplier: 1
+  # voltage_multiplier: 1
+  # active_power_multiplier: 1000
+  # apparent_power_multiplier: 1
+  assumed_power_factor: 0.90
+  nominal_voltage: 230.0
+
+  service_fuse_amp: 25.0
+  threshold_elevated_amp: 17.5
+  threshold_high_amp: 20.0
+  threshold_critical_amp: 22.5
+  threshold_limit_amp: 25.0
+
+  sample_interval_sec: 5
+  ema_window_sec: 30
+  prediction_window_sec: 120
+  prediction_min_samples: 8
+  prediction_max_change_amp: 6.0
+  mqtt_publish_interval_sec: 20
+  persistent_save_interval_sec: 300
+
+  imbalance_min_average_amp: 2.0
+  structural_imbalance_mild_amp: 3.0
+  structural_imbalance_significant_amp: 6.0
+  structural_imbalance_severe_amp: 10.0
+  structural_min_samples: 720
+  fuse_stress_time_constant_sec: 1200
+
+  max_source_age_sec: 30
+  shared_source_freshness: true
+  max_plausible_current_amp: 80
+  outlier_jump_amp: 15
+  outlier_confirmation_samples: 2
+  outlier_confirmation_tolerance_amp: 3
+
+  # Kies een schrijfbare locatie binnen je AppDaemon-installatie.
+  storage_file: /homeassistant/python_storage/phase_peak_guard.json
+  max_storage_mb: 5
+  daily_retention_days: 35
+  hourly_retention_hours: 168
+
+  mqtt_enabled: true
+  mqtt_discovery_prefix: homeassistant
+  mqtt_base_topic: home/phase_guard
+  mqtt_device_name: "3x25A Phase Guard"
+  mqtt_device_id: phase_peak_guard
+
+  # Versie 1 monitort uitsluitend en schakelt niets.
+  load_shedding_enabled: false
