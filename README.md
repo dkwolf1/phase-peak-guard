@@ -2,12 +2,24 @@
 
 # 3x25A Phase Guard for Home Assistant
 
+De actuele Nederlandse view staat in
+[`dashboards/phase_guard_dashboard.yaml`](dashboards/phase_guard_dashboard.yaml).
+Alle `phase_guard_*`-entiteiten in de view komen van deze app via MQTT Discovery.
+Vul zelf drie fasebronnen in `apps.yaml` in; de view heeft verder geen eigen
+entiteiten of extra kaarten nodig. De volledige entiteitenhandleiding staat in
+de [PV Energy Suite-dashboarddocumentatie](https://github.com/dkwolf1/PV-blueprint/blob/main/dashboards/README.md).
+
 Zelfstandige AppDaemon-app voor het bewaken en analyseren van een driefasige
 huisaansluiting. De app bewaakt primair de **stroom per fase** en publiceert de
 resultaten als één MQTT Discovery-device in Home Assistant.
 
 De app monitort en adviseert uitsluitend. Er worden geen switches bediend en er
 is geen koppeling met een PV-regelaar of andere AppDaemon-app.
+
+De app kan als zelfstandig onderdeel van de PV Energy Suite worden gebruikt.
+Zijn MQTT-headroomsensoren zijn beschikbaar voor dashboards. Zonder betrouwbare
+fase-toewijzing van apparaten gebruikt de verbruiksplanner die headroom niet
+als automatische startvoorwaarde; de guard blijft volledig onafhankelijk.
 
 ## Belangrijkste functies
 

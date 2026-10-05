@@ -5,7 +5,6 @@ type: sections
 subview: true
 max_columns: 3
 dense_section_placement: false
-theme: Frosted Glass Dark
 header:
   layout: responsive
   badges_position: bottom
@@ -43,17 +42,16 @@ badges:
     show_icon: true
     show_name: true
     color: state
-
 sections:
-  # Rij 1: status, capaciteit en verdeling in drie even brede secties.
   - type: grid
-    title: Status
     cards:
+      - type: heading
+        heading: Status
       - type: conditional
         conditions:
           - condition: state
             entity: binary_sensor.phase_guard_data_valid
-            state: "off"
+            state: 'off'
         card:
           type: tile
           entity: binary_sensor.phase_guard_data_valid
@@ -67,7 +65,7 @@ sections:
         conditions:
           - condition: state
             entity: binary_sensor.phase_guard_overload
-            state: "on"
+            state: 'on'
         card:
           type: tile
           entity: binary_sensor.phase_guard_overload
@@ -81,10 +79,10 @@ sections:
         conditions:
           - condition: state
             entity: binary_sensor.phase_guard_critical
-            state: "on"
+            state: 'on'
           - condition: state
             entity: binary_sensor.phase_guard_overload
-            state: "off"
+            state: 'off'
         card:
           type: tile
           entity: binary_sensor.phase_guard_critical
@@ -111,10 +109,10 @@ sections:
             icon: mdi:clock-check
         grid_options:
           columns: full
-
   - type: grid
-    title: Capaciteit
     cards:
+      - type: heading
+        heading: Capaciteit
       - type: gauge
         entity: sensor.phase_guard_peak_phase_current
         name: Hoogste fasestroom
@@ -142,10 +140,10 @@ sections:
             icon: mdi:sigma
         grid_options:
           columns: full
-
   - type: grid
-    title: Verdeling
     cards:
+      - type: heading
+        heading: Verdeling
       - type: entities
         show_header_toggle: false
         entities:
@@ -169,11 +167,10 @@ sections:
             icon: mdi:database-check
         grid_options:
           columns: full
-
-  # Rij 2: de drie fasen hebben exact dezelfde kaartopbouw.
   - type: grid
-    title: Fase L1
     cards:
+      - type: heading
+        heading: Fase L1
       - type: gauge
         entity: sensor.phase_guard_l1_current
         name: L1 stroom
@@ -207,10 +204,10 @@ sections:
             icon: mdi:swap-horizontal
         grid_options:
           columns: full
-
   - type: grid
-    title: Fase L2
     cards:
+      - type: heading
+        heading: Fase L2
       - type: gauge
         entity: sensor.phase_guard_l2_current
         name: L2 stroom
@@ -244,10 +241,10 @@ sections:
             icon: mdi:swap-horizontal
         grid_options:
           columns: full
-
   - type: grid
-    title: Fase L3
     cards:
+      - type: heading
+        heading: Fase L3
       - type: gauge
         entity: sensor.phase_guard_l3_current
         name: L3 stroom
@@ -281,11 +278,10 @@ sections:
             icon: mdi:swap-horizontal
         grid_options:
           columns: full
-
-  # Rij 3: twee grafieken en de structurele beoordeling.
   - type: grid
-    title: Fasestroom — 24 uur
     cards:
+      - type: heading
+        heading: Fasestroom — 24 uur
       - type: history-graph
         hours_to_show: 24
         entities:
@@ -298,10 +294,10 @@ sections:
         grid_options:
           columns: full
           rows: 4
-
   - type: grid
-    title: Zekeringbelasting — 24 uur
     cards:
+      - type: heading
+        heading: Zekeringbelasting — 24 uur
       - type: history-graph
         hours_to_show: 24
         entities:
@@ -314,10 +310,10 @@ sections:
         grid_options:
           columns: full
           rows: 4
-
   - type: grid
-    title: Structurele balans
     cards:
+      - type: heading
+        heading: Structurele balans
       - type: entities
         show_header_toggle: false
         entities:
@@ -335,11 +331,10 @@ sections:
             icon: mdi:arrow-down-bold-circle
         grid_options:
           columns: full
-
-  # Rij 4: dezelfde langetermijnwaarden per fase.
   - type: grid
-    title: Historie L1
     cards:
+      - type: heading
+        heading: Historie L1
       - type: entities
         show_header_toggle: false
         entities:
@@ -357,10 +352,10 @@ sections:
             icon: mdi:chart-line-variant
         grid_options:
           columns: full
-
   - type: grid
-    title: Historie L2
     cards:
+      - type: heading
+        heading: Historie L2
       - type: entities
         show_header_toggle: false
         entities:
@@ -378,10 +373,10 @@ sections:
             icon: mdi:chart-line-variant
         grid_options:
           columns: full
-
   - type: grid
-    title: Historie L3
     cards:
+      - type: heading
+        heading: Historie L3
       - type: entities
         show_header_toggle: false
         entities:
@@ -399,11 +394,10 @@ sections:
             icon: mdi:chart-line-variant
         grid_options:
           columns: full
-
-  # Rij 5: grensduur per fase, wederom exact gelijk opgebouwd.
   - type: grid
-    title: Grensduur L1
     cards:
+      - type: heading
+        heading: Grensduur L1
       - type: entities
         show_header_toggle: false
         entities:
@@ -418,10 +412,10 @@ sections:
             icon: mdi:flash-alert
         grid_options:
           columns: full
-
   - type: grid
-    title: Grensduur L2
     cards:
+      - type: heading
+        heading: Grensduur L2
       - type: entities
         show_header_toggle: false
         entities:
@@ -436,10 +430,10 @@ sections:
             icon: mdi:flash-alert
         grid_options:
           columns: full
-
   - type: grid
-    title: Grensduur L3
     cards:
+      - type: heading
+        heading: Grensduur L3
       - type: entities
         show_header_toggle: false
         entities:
@@ -454,12 +448,4 @@ sections:
             icon: mdi:flash-alert
         grid_options:
           columns: full
-
 cards: []
-background:
-  opacity: 53
-  alignment: center
-  size: cover
-  repeat: no-repeat
-  attachment: fixed
-  image: /local/achtergrond.jpg
