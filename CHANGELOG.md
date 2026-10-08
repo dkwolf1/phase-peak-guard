@@ -2,6 +2,14 @@
 
 Alle belangrijke wijzigingen aan dit project worden in dit bestand vastgelegd.
 
+## [1.1.2] - 2026-10-08
+
+### Opgelost
+
+- voorkomt `value_json is undefined`-meldingen door geen lege retained state meer te publiceren;
+- houdt MQTT-entiteiten tijdens het opstarten offline tot de eerste verse JSON-state is gepubliceerd;
+- maakt MQTT Discovery-templates bestand tegen lege of niet-JSON state-berichten.
+
 ## [1.1.1] - 2026-10-02
 
 ### Toegevoegd

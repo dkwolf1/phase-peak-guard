@@ -145,6 +145,7 @@ class PhasePeakGuardTests(unittest.TestCase):
 
             app.get_state = get_state
             app.initialize()
+            startup_calls = list(service_calls)
             app._sample({})
 
             self.assertEqual(app.latest_state["status"], "normal")
@@ -153,6 +154,31 @@ class PhasePeakGuardTests(unittest.TestCase):
             self.assertAlmostEqual(app.latest_state["lowest_headroom"], 12.9)
             self.assertTrue(service_calls)
             self.assertEqual({service for service, _kwargs in service_calls}, {"mqtt/publish"})
+            self.assertFalse(any(
+                kwargs.get("topic") == "home/phase_guard/state" and kwargs.get("payload") == ""
+                for _service, kwargs in startup_calls
+            ))
+            self.assertEqual(startup_calls[-1][1]["topic"], "home/phase_guard/availability")
+            self.assertEqual(startup_calls[-1][1]["payload"], "offline")
+            state_index = next(
+                index for index, (_service, kwargs) in enumerate(service_calls)
+                if kwargs.get("topic") == "home/phase_guard/state"
+            )
+            online_index = next(
+                index for index, (_service, kwargs) in enumerate(service_calls)
+                if kwargs.get("topic") == "home/phase_guard/availability" and kwargs.get("payload") == "online"
+            )
+            self.assertLess(state_index, online_index)
+
+    def test_discovery_templates_tolerate_non_json_state(self):
+        app = self.make_app()
+        sensor_template = app._value_template("l1_mean_30d", "unknown")
+        binary_template = app._value_template("overload", "OFF")
+
+        self.assertIn("value_json is defined", sensor_template)
+        self.assertIn("'l1_mean_30d' in value_json", sensor_template)
+        self.assertTrue(sensor_template.endswith("unknown{% endif %}"))
+        self.assertTrue(binary_template.endswith("OFF{% endif %}"))
 
     def test_shared_heartbeat_does_not_accept_when_every_source_is_stale(self):
         app = self.make_app()
